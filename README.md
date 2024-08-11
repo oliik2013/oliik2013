@@ -2,7 +2,7 @@
 - 👀 I’m interested in programing and Minecraft
 - 🌱 I’m currently learning coding
 - 💞️ I’m looking to collaborate on my projects
-- 📫 How to reach me: Email: oliik2013@oliik2013.is-a.dev
+- 📫 How to reach me: You cant for now (:
 - 😄 Pronouns: He
 - ⚡ Fun fact: You can make computers in Minecraft using redstone!
 
