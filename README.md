@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @oliik2013
-- 👀 I’m interested in programming and Minecraft.
-- 🌱 I’m currently learning nothing.
+- 👀 I’m interested in programming, Minecraft and AI.
+- 🌱 I’m currently learning AIs and LLMs.
 - 💞️ I’m looking to collaborate on python programms.
 - 📫 How to reach me: Email: oliik2013@oliik2013.thedev.me
 - 😄 Pronouns: He/Him
