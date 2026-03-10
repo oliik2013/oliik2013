@@ -1,74 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hi!</title>
+    <meta name="description" content="A clean and modern personal website hosted on GitHub Pages." />
+    <title>Welcome • Oliik</title>
 
     <style>
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #0f172a;
-            color: #e5e7eb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        :root {
+            --bg: #020617;
+            --surface: rgba(15, 23, 42, 0.85);
+            --surface-soft: rgba(30, 41, 59, 0.6);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-2: #a78bfa;
+            --border: rgba(148, 163, 184, 0.25);
         }
 
-        .card {
-            background: #020617;
-            border-radius: 12px;
-            padding: 32px;
-            max-width: 420px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(1000px 600px at 10% -10%, rgba(56, 189, 248, 0.22), transparent 55%),
+                radial-gradient(800px 500px at 100% 10%, rgba(167, 139, 250, 0.18), transparent 55%),
+                var(--bg);
+            display: grid;
+            place-items: center;
+            padding: 32px 18px;
+        }
+
+        .container {
+            width: min(920px, 100%);
+            border: 1px solid var(--border);
+            background: linear-gradient(170deg, var(--surface), rgba(15, 23, 42, 0.7));
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(2, 6, 23, 0.55);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero {
+            padding: 52px 38px 36px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.12);
+            color: #7dd3fc;
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 600;
         }
 
         h1 {
-            margin-top: 0;
-            font-size: 28px;
+            margin: 0;
+            font-size: clamp(2rem, 5.2vw, 3.3rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            max-width: 18ch;
         }
 
-        p {
-            line-height: 1.6;
-            color: #cbd5f5;
+        .lead {
+            margin: 18px 0 0;
+            color: #cbd5e1;
+            font-size: clamp(1rem, 2.6vw, 1.15rem);
+            line-height: 1.75;
+            max-width: 54ch;
+        }
+
+        .quick-links {
+            margin-top: 26px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            text-decoration: none;
+            color: var(--text);
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.75);
+            transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.6);
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        .button.primary {
+            background: linear-gradient(130deg, rgba(56, 189, 248, 0.24), rgba(167, 139, 250, 0.22));
+            border-color: rgba(125, 211, 252, 0.5);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            padding: 22px 22px 28px;
+        }
+
+        .tile {
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .tile h2 {
+            margin: 0 0 8px;
+            font-size: 0.98rem;
+        }
+
+        .tile p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.5;
+            font-size: 0.93rem;
         }
 
         .status {
-            margin-top: 12px;
-            font-size: 14px;
-            color: #94a3b8;
+            margin-top: 10px;
+            color: #7dd3fc;
+            font-size: 0.84rem;
             word-break: break-word;
         }
 
         footer {
-            margin-top: 24px;
-            font-size: 12px;
-            color: #64748b;
             text-align: center;
+            color: var(--muted);
+            font-size: 0.82rem;
+            padding: 0 22px 20px;
+        }
+
+        @media (max-width: 760px) {
+            .hero {
+                padding: 42px 22px 28px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 16px 16px 22px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>Hi!</h1>
-    <p>
-        Welcome to my Website<br>
-        My website hosted on Github Pages!<br>
-        I might update it soon!<br>
-    </p>
+<main class="container">
+    <section class="hero">
+        <span class="eyebrow">👋 welcome</span>
+        <h1>Hi, I’m building this corner of the internet.</h1>
+        <p class="lead">
+            This site is hosted on GitHub Pages and is getting a fresh new look.
+            More projects, updates, and personal details are coming soon.
+        </p>
 
+        <div class="quick-links">
+            <a class="button primary" href="#" aria-label="Future projects">View Projects</a>
+            <a class="button" href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
 
-    <div id="status" class="status"></div>
+        <div id="status" class="status"></div>
+    </section>
+
+    <section class="grid" aria-label="Highlights">
+        <article class="tile">
+            <h2>What I’m working on</h2>
+            <p>Improving this website with better design, clearer content, and useful links.</p>
+        </article>
+        <article class="tile">
+            <h2>Current setup</h2>
+            <p>Simple static site powered by GitHub Pages for speed, reliability, and easy updates.</p>
+        </article>
+        <article class="tile">
+            <h2>Next up</h2>
+            <p>Adding an about section, featured projects, and a contact path.</p>
+        </article>
+    </section>
 
     <footer>
-        Powered by Github Pages
+        Powered by GitHub Pages • Designed with clean, modern UI.
     </footer>
-</div>
+</main>
+
+<script>
+    const status = document.getElementById('status');
+    const now = new Date();
+    status.textContent = `Last refreshed: ${now.toLocaleString()}`;
+</script>
 
 </body>
 </html>
