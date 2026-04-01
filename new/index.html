@@ -1,214 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A clean and modern personal website hosted on GitHub Pages." />
-    <title>Welcome • Oliik</title>
-
+    <meta name="description" content="oliik2013's personal website - programming, Minecraft, and AI enthusiast" />
+    <title>oliik2013</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
     <style>
         :root {
-            --bg: #020617;
-            --surface: rgba(15, 23, 42, 0.85);
-            --surface-soft: rgba(30, 41, 59, 0.6);
-            --text: #e2e8f0;
-            --muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-2: #a78bfa;
-            --border: rgba(148, 163, 184, 0.25);
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-hover: #1a1a24;
+            --text: #e4e4e7;
+            --muted: #71717a;
+            --accent: #22d3ee;
+            --accent-dim: #0891b2;
+            --border: #27272a;
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "JetBrains Mono", "Fira Code", monospace;
+            background: var(--bg);
             color: var(--text);
-            background:
-                radial-gradient(1000px 600px at 10% -10%, rgba(56, 189, 248, 0.22), transparent 55%),
-                radial-gradient(800px 500px at 100% 10%, rgba(167, 139, 250, 0.18), transparent 55%),
-                var(--bg);
-            display: grid;
-            place-items: center;
-            padding: 32px 18px;
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
         .container {
-            width: min(920px, 100%);
-            border: 1px solid var(--border);
-            background: linear-gradient(170deg, var(--surface), rgba(15, 23, 42, 0.7));
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(2, 6, 23, 0.55);
-            backdrop-filter: blur(8px);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
         }
 
-        .hero {
-            padding: 52px 38px 36px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            gap: 8px;
-            align-items: center;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: rgba(56, 189, 248, 0.12);
-            color: #7dd3fc;
-            font-size: 12px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            font-weight: 600;
+        header {
+            margin-bottom: 48px;
         }
 
         h1 {
-            margin: 0;
-            font-size: clamp(2rem, 5.2vw, 3.3rem);
-            line-height: 1.08;
-            letter-spacing: -0.02em;
-            max-width: 18ch;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
         }
 
-        .lead {
-            margin: 18px 0 0;
-            color: #cbd5e1;
-            font-size: clamp(1rem, 2.6vw, 1.15rem);
-            line-height: 1.75;
-            max-width: 54ch;
+        .username {
+            color: var(--accent);
+            font-size: 1.1rem;
         }
 
-        .quick-links {
-            margin-top: 26px;
+        .bio {
+            color: var(--muted);
+            margin-top: 16px;
+            max-width: 500px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .links {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .button {
-            text-decoration: none;
-            color: var(--text);
-            padding: 10px 16px;
-            border-radius: 10px;
+        .link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--card);
             border: 1px solid var(--border);
-            background: rgba(15, 23, 42, 0.75);
-            transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
-            font-weight: 600;
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.2s ease;
             font-size: 0.95rem;
         }
 
-        .button:hover {
+        .link:hover {
+            background: var(--card-hover);
+            border-color: var(--accent-dim);
+            color: var(--accent);
             transform: translateY(-2px);
-            border-color: rgba(56, 189, 248, 0.6);
-            background: rgba(30, 41, 59, 0.95);
         }
 
-        .button.primary {
-            background: linear-gradient(130deg, rgba(56, 189, 248, 0.24), rgba(167, 139, 250, 0.22));
-            border-color: rgba(125, 211, 252, 0.5);
-        }
-
-        .grid {
+        .projects {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            padding: 22px 22px 28px;
+            gap: 12px;
         }
 
-        .tile {
-            background: var(--surface-soft);
+        .project {
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 8px;
             padding: 16px;
+            transition: border-color 0.2s ease;
         }
 
-        .tile h2 {
-            margin: 0 0 8px;
-            font-size: 0.98rem;
+        .project:hover {
+            border-color: var(--accent-dim);
         }
 
-        .tile p {
-            margin: 0;
+        .project h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .project p {
             color: var(--muted);
-            line-height: 1.5;
-            font-size: 0.93rem;
+            font-size: 0.875rem;
         }
 
-        .status {
-            margin-top: 10px;
-            color: #7dd3fc;
-            font-size: 0.84rem;
-            word-break: break-word;
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--accent);
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .contact {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
         }
 
         footer {
-            text-align: center;
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
             color: var(--muted);
-            font-size: 0.82rem;
-            padding: 0 22px 20px;
+            font-size: 0.8rem;
+            text-align: center;
         }
 
-        @media (max-width: 760px) {
-            .hero {
-                padding: 42px 22px 28px;
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 16px;
             }
-
-            .grid {
-                grid-template-columns: 1fr;
-                padding: 16px 16px 22px;
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>oliik2013</h1>
+            <p class="bio">Programming enthusiast • Minecraft junkie • Learning AI/LLMs</p>
+        </header>
 
-<main class="container">
-    <section class="hero">
-        <span class="eyebrow">👋 welcome</span>
-        <h1>Hi, I’m building this corner of the internet.</h1>
-        <p class="lead">
-            This site is hosted on GitHub Pages and is getting a fresh new look.
-            More projects, updates, and personal details are coming soon.
-        </p>
+        <section class="section">
+            <h2 class="section-title">Connect</h2>
+            <div class="links">
+                <a href="https://github.com/oliik2013" class="link">GitHub</a>
+                <a href="mailto:oliik2013@oliik2013.thedev.me" class="link">Email</a>
+            </div>
+        </section>
 
-        <div class="quick-links">
-            <a class="button primary" href="#" aria-label="Future projects">View Projects</a>
-            <a class="button" href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
+        <section class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects">
+                <article class="project">
+                    <h3>Python Programs</h3>
+                    <p>Various Python projects I'm working on. Always open to collaboration!</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-        <div id="status" class="status"></div>
-    </section>
+        <section class="section">
+            <h2 class="section-title">About</h2>
+            <p style="color: var(--muted);">
+                Currently learning about AI and Large Language Models. 
+                Minecraft enthusiast - did you know Minecraft is written in Java? 
+                He/Him pronouns. Always looking to collaborate on Python projects.
+            </p>
+        </section>
 
-    <section class="grid" aria-label="Highlights">
-        <article class="tile">
-            <h2>What I’m working on</h2>
-            <p>Improving this website with better design, clearer content, and useful links.</p>
-        </article>
-        <article class="tile">
-            <h2>Current setup</h2>
-            <p>Simple static site powered by GitHub Pages for speed, reliability, and easy updates.</p>
-        </article>
-        <article class="tile">
-            <h2>Next up</h2>
-            <p>Adding an about section, featured projects, and a contact path.</p>
-        </article>
-    </section>
+        <section class="section">
+            <h2 class="section-title">Contact</h2>
+            <p class="contact">
+                Reach me at <a href="mailto:oliik2013@oliik2013.thedev.me">oliik2013@oliik2013.thedev.me</a>
+            </p>
+        </section>
 
-    <footer>
-        Powered by GitHub Pages • Designed with clean, modern UI.
-    </footer>
-</main>
-
-<script>
-    const status = document.getElementById('status');
-    const now = new Date();
-    status.textContent = `Last refreshed: ${now.toLocaleString()}`;
-</script>
-
+        <footer>
+            <p>Built with plain HTML • Hosted on GitHub Pages</p>
+        </footer>
+    </div>
 </body>
 </html>
