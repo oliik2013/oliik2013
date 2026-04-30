@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="oliik2013 builds with programming, Python, AI, and a sharp dark aesthetic." />
+    <meta name="theme-color" content="#090305" />
+    <meta property="og:title" content="oliik2013" />
+    <meta property="og:description" content="Programming, AI, Python collaboration, and a darker red visual identity." />
+    <title>oliik2013 • Code, AI, and creative projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #090305;
+            --bg-2: #120508;
+            --panel: rgba(24, 10, 14, 0.78);
+            --panel-strong: rgba(18, 7, 10, 0.92);
+            --text: #f8f2f3;
+            --muted: #cfbcc1;
+            --line: rgba(255, 215, 222, 0.14);
+            --accent: #ff3b47;
+            --accent-deep: #a31225;
+            --accent-soft: #ff8e99;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+            --radius: 28px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "IBM Plex Sans", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 0%, rgba(255, 59, 71, 0.18), transparent 26%),
+                radial-gradient(circle at 92% 10%, rgba(163, 18, 37, 0.24), transparent 24%),
+                linear-gradient(180deg, #050203 0%, #090305 42%, #13060a 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 36px 36px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 78%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 40px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(10, 5, 7, 0.72);
+            backdrop-filter: blur(16px);
+            position: sticky;
+            top: 16px;
+            z-index: 10;
+        }
+
+        .brand,
+        h1,
+        h2,
+        h3 {
+            font-family: "Bricolage Grotesque", sans-serif;
+        }
+
+        .brand {
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        .brand span {
+            color: var(--accent-soft);
+        }
+
+        nav {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.95rem;
+            transition: color 140ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--text);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .hero-copy,
+        .hero-card,
+        .section,
+        .callout,
+        footer {
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(20, 8, 12, 0.88), rgba(12, 5, 8, 0.96));
+            box-shadow: var(--shadow);
+        }
+
+        .hero-copy {
+            border-radius: 34px;
+            padding: 42px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-copy::after {
+            content: "";
+            position: absolute;
+            right: -10%;
+            bottom: -20%;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 59, 71, 0.28), transparent 62%);
+            filter: blur(8px);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 59, 71, 0.12);
+            border: 1px solid rgba(255, 142, 153, 0.2);
+            color: #ffd0d5;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 18px 0 14px;
+            font-size: clamp(2.8rem, 6vw, 5.2rem);
+            line-height: 0.93;
+            letter-spacing: -0.05em;
+            max-width: 9ch;
+            text-wrap: balance;
+        }
+
+        .lead {
+            margin: 0;
+            max-width: 58ch;
+            color: #e7d8db;
+            font-size: clamp(1rem, 2.4vw, 1.14rem);
+            line-height: 1.78;
+        }
+
+        .hero-actions,
+        .link-row,
+        .hero-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-actions {
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 140ms ease, border-color 140ms ease, background 140ms ease, color 140ms ease;
+            background: rgba(29, 10, 15, 0.75);
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(255, 142, 153, 0.45);
+            background: rgba(38, 12, 18, 0.96);
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, rgba(255, 59, 71, 0.28), rgba(163, 18, 37, 0.45));
+            border-color: rgba(255, 142, 153, 0.34);
+        }
+
+        .hero-pills {
+            margin-top: 28px;
+        }
+
+        .pill {
+            padding: 10px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #f1d7db;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-card {
+            border-radius: 28px;
+            padding: 28px;
+            background:
+                linear-gradient(180deg, rgba(17, 7, 10, 0.98), rgba(14, 5, 8, 0.94)),
+                var(--panel-strong);
+        }
+
+        .hero-card h2,
+        .section h2,
+        .callout h2 {
+            margin: 0 0 14px;
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-card p,
+        .section-intro,
+        .card p,
+        .focus-card p,
+        .callout p,
+        footer,
+        li {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .hero-card ul {
+            margin: 16px 0 0;
+            padding-left: 18px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .section {
+            border-radius: var(--radius);
+            padding: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .cards,
+        .focus-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .cards {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .focus-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .card,
+        .focus-card {
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: rgba(20, 8, 12, 0.64);
+            padding: 22px;
+        }
+
+        .card h3,
+        .focus-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.08rem;
+        }
+
+        .card strong,
+        .focus-card strong {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent-soft);
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+        }
+
+        .callout {
+            border-radius: 30px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        footer {
+            margin-top: 24px;
+            border-radius: 18px;
+            padding: 18px 22px;
+            text-align: center;
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 920px) {
+            .hero,
+            .cards,
+            .focus-grid,
+            .callout {
+                grid-template-columns: 1fr;
+            }
+
+            .callout {
+                display: grid;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                width: min(100% - 20px, 1120px);
+            }
+
+            .topbar,
+            .hero-copy,
+            .hero-card,
+            .section,
+            .callout,
+            footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .topbar {
+                position: static;
+            }
+
+            h1 {
+                max-width: 11ch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <a class="brand" href="#top">oliik<span>2013</span></a>
+            <nav aria-label="Primary navigation">
+                <a href="#about">About</a>
+                <a href="#focus">Focus</a>
+                <a href="#connect">Connect</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" id="top">
+                <div class="hero-copy">
+                    
+                    <h1>Code with taste, curiosity, and edge.</h1>
+                    <p class="lead">
+                        I’m oliik2013 — into programming, AI, Python, and creative projects that feel sharp instead of generic.
+                        I like building things that work well, look clean, and still have a bit of attitude.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button primary" href="https://github.com/oliik2013" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
+                        <a class="button" href="mailto:oliik2013@oliik2013.thedev.me">Send an email</a>
+                    </div>
+
+                    <div class="hero-pills" aria-label="Highlights">
+                        <span class="pill">Open to Python collaboration</span>
+                        <span class="pill">Learning AI &amp; LLMs</span>
+                        <span class="pill">Dark red aesthetic</span>
+                    </div>
+                </div>
+
+                <aside class="hero-card" aria-label="Current snapshot">
+                    <h2>Right now</h2>
+                    <p>
+                        I’m focused on learning fast, building more, and shaping projects that feel personal instead of off-the-shelf.
+                    </p>
+                    <ul>
+                        <li>Interested in programming, Minecraft, and AI</li>
+                        <li>Enjoy building and improving Python projects</li>
+                        <li>Prefer clean design with stronger visual identity</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <div class="stack">
+                <section class="section" id="about">
+                    <div class="section-header">
+                        <span class="eyebrow">About</span>
+                        <h2>A small digital space with a stronger point of view.</h2>
+                        <p class="section-intro">
+                            I like software that feels deliberate. Good structure matters, but so does style. The best projects are useful, memorable, and built with enough care that people can feel it.
+                        </p>
+                    </div>
+
+                    <div class="cards">
+                        <article class="card">
+                            <strong>01</strong>
+                            <h3>Programming first</h3>
+                            <p>
+                                I enjoy building with code, polishing details, and turning rough ideas into something solid.
+                            </p>
+                        </article>
+                        <article class="card">
+                            <strong>02</strong>
+                            <h3>AI curiosity</h3>
+                            <p>
+                                I’m learning more about AI and LLMs through experimentation, hands-on projects, and constant iteration.
+                            </p>
+                        </article>
+                        <article class="card">
+                            <strong>03</strong>
+                            <h3>Minecraft influence</h3>
+                            <p>
+                                Minecraft still inspires the way I think about systems: open-ended, creative, and surprisingly deep when built well.
+                            </p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="section" id="focus">
+                    <div class="section-header">
+                        <span class="eyebrow">Focus</span>
+                        <h2>What I’m pushing forward</h2>
+                        <p class="section-intro">
+                            The goal is simple: keep learning, keep building, and keep making projects that are better than the default version.
+                        </p>
+                    </div>
+
+                    <div class="focus-grid">
+                        <article class="focus-card">
+                            <strong>Python</strong>
+                            <h3>Collaboration-ready</h3>
+                            <p>
+                                I’m open to collaborating on Python programs, especially when there’s space to learn and make something genuinely useful.
+                            </p>
+                        </article>
+                        <article class="focus-card">
+                            <strong>AI</strong>
+                            <h3>Learning by building</h3>
+                            <p>
+                                I prefer hands-on progress: testing ideas, breaking things, improving them, and understanding how modern AI tools actually work.
+                            </p>
+                        </article>
+                        <article class="focus-card">
+                            <strong>Design</strong>
+                            <h3>Clean with character</h3>
+                            <p>
+                                I like dark interfaces, stronger color choices, and pages that feel intentional without becoming cluttered.
+                            </p>
+                        </article>
+                        <article class="focus-card">
+                            <strong>Projects</strong>
+                            <h3>Always evolving</h3>
+                            <p>
+                                This site is a foundation for future work, experiments, and the kinds of projects worth showing off properly.
+                            </p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="callout" id="connect">
+                    <div>
+                        <span class="eyebrow">Connect</span>
+                        <h2>Want to make something cool?</h2>
+                        <p>
+                            If you’re into Python, AI, or creative coding, feel free to reach out.
+                        </p>
+                    </div>
+
+                    <div class="link-row">
+                        <a class="button primary" href="mailto:oliik2013@oliik2013.thedev.me">oliik2013@oliik2013.thedev.me</a>
+                        <a class="button" href="https://github.com/oliik2013" target="_blank" rel="noopener noreferrer">github.com/oliik2013</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <span id="year"></span> oliik2013
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

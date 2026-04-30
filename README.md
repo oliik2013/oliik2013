@@ -2,7 +2,7 @@
 - 👀 I’m interested in programming, Minecraft and AI.
 - 🌱 I’m currently learning AIs and LLMs.
 - 💞️ I’m looking to collaborate on Python programs.
-- 📫 How to reach me: Email: oliik2013@oliik2013.thedev.me
+- 📫 How to reach me: Email: [oliik2013@oliik2013.thedev.me](mailto:oliik2013@oliik2013.thedev.me)
 - 😄 Pronouns: He/Him
 - ⚡ Fun fact: Minecraft is written in Java.
 
